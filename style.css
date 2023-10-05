@@ -1,0 +1,246 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+  --clr-primary-450: hsla(4, 100%, 67%, 0.15);
+  --clr-primary-500: hsl(4, 100%, 67%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-neutral-200: hsl(0, 0%, 85%);
+  --clr-neutral-500: hsl(231, 7%, 60%);
+  --clr-neutral-800: hsl(235, 18%, 26%);
+  --clr-neutral-900: hsl(234, 29%, 20%);
+}
+
+html {
+  background-color: var(--clr-neutral-800);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--clr-neutral-900);
+
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  background-color: var(--clr-neutral-100);
+  margin-inline: auto;
+  margin-bottom: 0.75rem;
+  width: min(90vw, 23.4em);
+  border-radius: 2.25rem;
+  overflow: hidden;
+}
+
+.container.success-message {
+  height: max-content;
+  max-width: 31rem;
+  padding-inline: 1rem;
+  margin-inline: auto;
+}
+
+.full-text-container {
+  padding-top: 2rem;
+  padding-inline: 1.5rem;
+}
+
+.text-container {
+  margin-bottom: 2.5rem;
+  text-wrap: balance;
+}
+
+.img {
+  max-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sign-up-form {
+  display: grid;
+  box-shadow: 0 15px 60px 0 rgba(0 0 0 / 0.25);
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 52.5em) {
+  .full-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .container {
+    width: 58em;
+  }
+
+  .sign-up-form {
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: auto 400px;
+    gap: 1rem;
+  }
+
+  .full-text-container {
+    grid-column: 1/2;
+    padding-inline: 2rem;
+    align-items: end;
+  }
+
+  picture {
+    order: 2;
+    grid-column: 2/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+h1 {
+  font-size: clamp(2.5rem, 1.67vw + 2.17rem, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  margin-block: 1.5rem;
+}
+
+ul li {
+  padding-left: 2em;
+  margin-bottom: 0.75em;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 21px;
+  height: 21px;
+  background-repeat: no-repeat;
+  background-image: url(/assets/images/icon-list.svg);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-container label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  position: relative;
+  bottom: 0.5rem;
+}
+
+.form-container input {
+  border-radius: 0.5rem;
+  border: 1px solid var(--clr-neutral-200);
+  padding: 1rem 0 1rem 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-container.unchecked .error-message,
+.form-container.valid .error-message {
+  display: none;
+}
+
+.form-container.invalid {
+  position: relative;
+}
+
+.form-container.invalid .error-message {
+  color: var(--clr-primary-500);
+  font-size: 0.75rem;
+  font-weight: 700;
+  bottom: 0.5rem;
+  margin-left: auto;
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+}
+
+.form-container.invalid input {
+  border-color: var(--clr-primary-500);
+  background-color: var(--clr-primary-450);
+  color: var(--clr-primary-500);
+}
+
+.form-container.valid input {
+  border: 1px solid var(--clr-neutral-900);
+  color: var(--clr-neutral-900);
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 1rem;
+  color: var(--clr-neutral-100);
+  background-color: var(--clr-neutral-900);
+  border-radius: 0.5rem;
+  border: none;
+
+  /* No transition on gradient? */
+  transition: all 0.5s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 103, 56, 1) 0%,
+    rgba(255, 82, 122, 1) 100%
+  );
+  box-shadow: 0 15px 20px 5px rgba(255, 103, 56, 0.3);
+}
+
+/* Success Message */
+
+.success-message {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8.75rem 1.5rem 1.5rem;
+  min-height: 100vh;
+}
+
+.success-message div {
+  margin-bottom: 1.5rem;
+}
+
+.success-message .svg {
+  margin-bottom: 2.5rem;
+}
+
+.success-message strong {
+  font-weight: 700;
+}
+
+.success-message .btn {
+  margin-top: auto;
+}
+
+@media (min-width: 32em) {
+  .success-message {
+    padding: 2.875rem 3rem 3rem;
+    min-height: auto;
+  }
+
+  .success-message .btn {
+    margin-top: 0;
+  }
+}
